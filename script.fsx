@@ -73,6 +73,11 @@ let edit_all zip_path =
     iterate_entries edit_html_styles archive
     iterate_entries (edit_html_images d) archive
     rename_image_entries d archive
-
-edit_all "Simulacrum_ Hatred Ch 2 - The Dragon.zip"
+    
+// This is just a slight change compared to the video. Instead of passing in the file directly, it would be more ergonomic to
+// just modify all the zip files in the current folder.
+for file in Directory.GetFiles(".","*.zip") do
+    printfn "Modifying: %s" file
+    edit_all file
+    
 printfn "Done!"
